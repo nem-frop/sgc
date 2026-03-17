@@ -132,6 +132,23 @@ CUSTOM_CSS = f"""
     a:hover {{
         color: {PRIMARY_ORANGE} !important;
     }}
+
+    /* Sidebar expand button — always visible */
+    [data-testid="stSidebarCollapsedControl"] {{
+        display: block !important;
+        visibility: visible !important;
+    }}
+    [data-testid="stSidebarCollapsedControl"] button {{
+        background-color: {CREAM_BG} !important;
+        border: 1px solid {GOLD_ACCENT} !important;
+        border-radius: 0 8px 8px 0 !important;
+        color: {PRIMARY_ORANGE} !important;
+        padding: 8px !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+    }}
+    [data-testid="stSidebarCollapsedControl"] button:hover {{
+        background-color: {GOLD_ACCENT} !important;
+    }}
 </style>
 """
 
@@ -692,6 +709,7 @@ def main():
         page_title="SG Courses Explorer",
         page_icon=":mortar_board:",
         layout="wide",
+        initial_sidebar_state="expanded",
     )
 
     st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
