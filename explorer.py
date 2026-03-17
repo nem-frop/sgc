@@ -316,7 +316,7 @@ def render_table_header(show_institution=False):
 
 
 def render_landing(df, mapping):
-    """Show a welcome page when no domains are selected."""
+    """Show a welcome page when no domains are selected. Cards are clickable."""
     domain_counts = count_courses_per_domain(df)
     total = len(df)
 
@@ -325,30 +325,56 @@ def render_landing(df, mapping):
         f'color:#6B7280;max-width:600px;line-height:1.6;">'
         f"Browse <strong style=\"color:{PRIMARY_ORANGE};\">{total} courses</strong> "
         f"across Singapore's universities and arts institutions. "
-        f"Select one or more domains from the sidebar to get started.</p>",
+        f"Click a domain to explore, or use the sidebar filters.</p>",
         unsafe_allow_html=True,
     )
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Domain cards grid
+    # Domain cards grid — each is a button that sets a pending domain
     all_domains = sorted(mapping["all_domains"])
     cols = st.columns(3)
     for i, domain in enumerate(all_domains):
         count = domain_counts.get(domain, 0)
         color = DOMAIN_COLORS.get(domain, "#6B7280")
         with cols[i % 3]:
-            st.markdown(
-                f'<div style="background-color:white;border-radius:10px;padding:16px 18px;'
-                f"margin-bottom:10px;border-left:4px solid {color};"
-                f'box-shadow:0 1px 3px rgba(0,0,0,0.06);">'
-                f'<div style="font-family:\'Work Sans\',sans-serif;font-weight:600;'
-                f'font-size:14px;color:{DARK_TEXT};">{domain}</div>'
-                f'<div style="font-family:\'Work Sans\',sans-serif;font-size:12px;'
-                f'color:{color};margin-top:4px;">{count} courses</div>'
-                f"</div>",
-                unsafe_allow_html=True,
-            )
+            if st.button(
+                f"**{domain}**\n\n{count} courses",
+                key=f"landing_{domain}",
+                use_container_width=True,
+            ):
+                # Store pending domain — will be applied on next rerun before widgets render
+                st.session_state["_pending_domain"] = domain
+                st.rerun()
+
+    # Inject styling for landing buttons to look like cards
+    card_css = f"""
+    <style>
+        /* Style landing page buttons as cards */
+        [data-testid="stButton"][class*="st-key-landing_"] > button {{
+            background-color: white !important;
+            border: 1px solid #f3f4f6 !important;
+            border-left: 4px solid {PRIMARY_ORANGE} !important;
+            border-radius: 10px !important;
+            padding: 16px 18px !important;
+            text-align: left !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+            color: {DARK_TEXT} !important;
+            font-family: 'Work Sans', sans-serif !important;
+            min-height: 70px !important;
+            transition: box-shadow 0.2s, border-color 0.2s !important;
+        }}
+        [data-testid="stButton"][class*="st-key-landing_"] > button:hover {{
+            box-shadow: 0 3px 8px rgba(255,152,32,0.15) !important;
+            border-left-color: {PRIMARY_ORANGE} !important;
+            border-color: {PRIMARY_ORANGE}40 !important;
+        }}
+        [data-testid="stButton"][class*="st-key-landing_"] > button p {{
+            margin: 0 !important;
+        }}
+    </style>
+    """
+    st.markdown(card_css, unsafe_allow_html=True)
 
     # Quick stats
     st.markdown("<br>", unsafe_allow_html=True)
@@ -673,6 +699,13 @@ def main():
     # Init session state
     if "expanded_groups" not in st.session_state:
         st.session_state.expanded_groups = set()
+
+    # Apply any pending domain selection from landing page card click.
+    # This must happen BEFORE the sidebar checkboxes are rendered,
+    # so the checkbox default value picks it up.
+    if "_pending_domain" in st.session_state:
+        domain = st.session_state.pop("_pending_domain")
+        st.session_state[f"domain_{domain}"] = True
 
     # Header
     st.markdown(
