@@ -1,0 +1,1037 @@
+{
+  "domain_to_majors": {
+    "Architecture and Planning": [
+      "Architecture",
+      "Environmental Planning",
+      "Green Architecture",
+      "Interior Design",
+      "Landscape Architecture",
+      "Sustainable Design and Construction",
+      "Sustainable Interior Design",
+      "Urban Design and Sustainability",
+      "Urban and Regional Planning"
+    ],
+    "Arts and Design": [
+      "Animation",
+      "Creative Writing",
+      "Dance",
+      "Digital Media",
+      "Fashion Design",
+      "Film Production",
+      "Film Studies",
+      "Fine Arts",
+      "Graphic Design",
+      "Illustration",
+      "Industrial Design",
+      "Interior Design",
+      "Music",
+      "Music Production",
+      "Performing Arts",
+      "Photography",
+      "Screenwriting",
+      "Theatre Arts",
+      "Visual Arts"
+    ],
+    "Biological Sciences": [
+      "Animal Science",
+      "Anthropology",
+      "Biology",
+      "Chemistry",
+      "Community Health",
+      "Consumer Behavior",
+      "Counseling",
+      "Culinary Nutrition",
+      "Early Childhood Education",
+      "Educational Leadership",
+      "Elementary Education",
+      "Environmental Science",
+      "Exercise Science",
+      "Food Science",
+      "Genetics",
+      "Kinesiology",
+      "Marriage and Family Therapy",
+      "Medicine",
+      "Natural Resource Management",
+      "Natural Sciences",
+      "Neuroscience",
+      "Nursing",
+      "Nutrition and Dietetics",
+      "Occupational Therapy",
+      "Physical Therapy",
+      "Psychology",
+      "Public Health",
+      "Public Health Administration",
+      "Secondary Education",
+      "Sports Medicine"
+    ],
+    "Business and Economics": [
+      "Accounting",
+      "Actuarial Science",
+      "Advertising",
+      "Business Administration",
+      "Consumer Behavior",
+      "Digital Marketing",
+      "Economics",
+      "Entrepreneurship",
+      "Fashion Design",
+      "Finance",
+      "Financial Planning",
+      "Global Studies",
+      "Hospitality and Tourism",
+      "International Business",
+      "Investment Management",
+      "Market Research",
+      "Marketing",
+      "Organizational Development",
+      "Philosophy, Politics and Economics (PPE)",
+      "Public Administration",
+      "Public Policy",
+      "Public Policy Analysis",
+      "Sales",
+      "Sports Management",
+      "Statistics",
+      "Supply Chain Management"
+    ],
+    "Communication": [
+      "Advertising",
+      "Digital Marketing",
+      "Film Production",
+      "Graphic Design",
+      "Illustration",
+      "Journalism",
+      "Marketing",
+      "Mass Communication",
+      "Media and Communications",
+      "Photography",
+      "Public Relations",
+      "Sales",
+      "Sports Management"
+    ],
+    "Education": [
+      "Counseling",
+      "Early Childhood Education",
+      "Educational Leadership",
+      "Elementary Education",
+      "Fine Arts",
+      "Health Education",
+      "Performing Arts",
+      "Secondary Education",
+      "Sociology",
+      "Special Education",
+      "Visual Arts"
+    ],
+    "Engineering": [
+      "Animation",
+      "Architecture",
+      "Artificial Intelligence & Machine Learning",
+      "Biomedical Engineering",
+      "Chemical Engineering",
+      "Civil Engineering",
+      "Computer Science",
+      "Cybersecurity",
+      "Digital Media",
+      "Electrical Engineering",
+      "Energy Management",
+      "Geothermal Energy Engineering",
+      "Hydro Energy Engineering",
+      "Industrial Design",
+      "Information Technology",
+      "Mechanical Engineering",
+      "Music Production",
+      "Renewable Energy Technologies",
+      "Software Engineering",
+      "Solar Energy Engineering",
+      "Supply Chain Management",
+      "Sustainable Engineering",
+      "Wind Energy Engineering"
+    ],
+    "History and Philosophy": [
+      "Comparative Literature",
+      "Comparative Religion",
+      "Cultural Studies",
+      "Dance",
+      "Diplomacy",
+      "English",
+      "Ethics",
+      "Ethnic Studies",
+      "Film Studies",
+      "Foreign Languages",
+      "Gender and Sexuality Studies",
+      "History",
+      "Languages and Linguistics",
+      "Linguistics",
+      "Music",
+      "Philosophy",
+      "Religious Studies",
+      "Social Justice Studies",
+      "Theatre Arts",
+      "Theology",
+      "Translation and Interpretation"
+    ],
+    "Language and Area Studies": [
+      "Area Studies",
+      "Comparative Literature",
+      "Creative Writing",
+      "English",
+      "Foreign Languages",
+      "International Business",
+      "Languages and Linguistics",
+      "Linguistics",
+      "Translation and Interpretation"
+    ],
+    "Legal Studies": [
+      "Environmental Law",
+      "Law",
+      "Legal Studies",
+      "Political Science"
+    ],
+    "Mathematics and Computer Science": [
+      "Accounting",
+      "Actuarial Science",
+      "Applied Mathematics",
+      "Artificial Intelligence & Machine Learning",
+      "Computer Science",
+      "Cybersecurity",
+      "Data Science",
+      "Economics",
+      "Finance",
+      "Financial Planning",
+      "Health Informatics",
+      "Information Technology",
+      "Investment Management",
+      "Mathematics",
+      "Physics",
+      "Software Engineering",
+      "Statistics"
+    ],
+    "Medicine Sciences": [
+      "Community Health",
+      "Culinary Nutrition",
+      "Exercise Science",
+      "Global Health",
+      "Health Informatics",
+      "Medicine",
+      "Nursing",
+      "Nutrition and Dietetics",
+      "Occupational Therapy",
+      "Physical Therapy",
+      "Public Health Administration"
+    ],
+    "Physical and Environment Sciences": [
+      "Agroecology",
+      "Applied Mathematics",
+      "Aquaculture and Fisheries",
+      "Biology",
+      "Chemical Engineering",
+      "Chemistry",
+      "Civil Engineering",
+      "Climate Change & Sustainability Studies",
+      "Data Science",
+      "Electrical Engineering",
+      "Energy Management",
+      "Environmental Law",
+      "Environmental Planning",
+      "Environmental Policy",
+      "Environmental Science",
+      "Food Systems and Policy",
+      "Geography",
+      "Geology",
+      "Geothermal Energy Engineering",
+      "Green Architecture",
+      "Hydro Energy Engineering",
+      "Landscape Architecture",
+      "Mathematics",
+      "Mechanical Engineering",
+      "Natural Resource Management",
+      "Natural Sciences",
+      "Neuroscience",
+      "Physics",
+      "Renewable Energy Technologies",
+      "Soil Science",
+      "Solar Energy Engineering",
+      "Sustainable Agriculture",
+      "Sustainable Design and Construction",
+      "Sustainable Engineering",
+      "Sustainable Interior Design"
+    ],
+    "Politics and Social Studies": [
+      "Anthropology",
+      "Area Studies",
+      "Business Administration",
+      "Climate Change & Sustainability Studies",
+      "Comparative Religion",
+      "Cultural Studies",
+      "Diplomacy",
+      "Entrepreneurship",
+      "Environmental Policy",
+      "Ethics",
+      "Ethnic Studies",
+      "Gender and Sexuality Studies",
+      "Geography",
+      "Global Health",
+      "Global Studies",
+      "History",
+      "International Relations",
+      "Journalism",
+      "Law",
+      "Legal Studies",
+      "Marriage and Family Therapy",
+      "Media and Communications",
+      "Organizational Development",
+      "Philosophy",
+      "Philosophy, Politics and Economics (PPE)",
+      "Political Science",
+      "Public Administration",
+      "Public Policy",
+      "Public Policy Analysis",
+      "Public Safety and Emergency Management",
+      "Religious Studies",
+      "Social Justice Studies",
+      "Social Work",
+      "Sociology",
+      "Theology"
+    ],
+    "Veterinary and Agriculture Sciences": [
+      "Agroecology",
+      "Animal Science",
+      "Aquaculture and Fisheries",
+      "Food Science",
+      "Food Systems and Policy",
+      "Genetics",
+      "Soil Science",
+      "Sustainable Agriculture",
+      "Veterinary Medicine"
+    ]
+  },
+  "major_to_domains": {
+    "Architecture": [
+      "Architecture and Planning",
+      "Engineering"
+    ],
+    "Environmental Planning": [
+      "Architecture and Planning",
+      "Physical and Environment Sciences"
+    ],
+    "Green Architecture": [
+      "Architecture and Planning",
+      "Physical and Environment Sciences"
+    ],
+    "Interior Design": [
+      "Architecture and Planning",
+      "Arts and Design"
+    ],
+    "Landscape Architecture": [
+      "Architecture and Planning",
+      "Physical and Environment Sciences"
+    ],
+    "Sustainable Design and Construction": [
+      "Architecture and Planning",
+      "Physical and Environment Sciences"
+    ],
+    "Sustainable Interior Design": [
+      "Architecture and Planning",
+      "Physical and Environment Sciences"
+    ],
+    "Urban Design and Sustainability": [
+      "Architecture and Planning"
+    ],
+    "Urban and Regional Planning": [
+      "Architecture and Planning"
+    ],
+    "Animation": [
+      "Arts and Design",
+      "Engineering"
+    ],
+    "Creative Writing": [
+      "Arts and Design",
+      "Language and Area Studies"
+    ],
+    "Dance": [
+      "Arts and Design",
+      "History and Philosophy"
+    ],
+    "Digital Media": [
+      "Arts and Design",
+      "Engineering"
+    ],
+    "Fashion Design": [
+      "Arts and Design",
+      "Business and Economics"
+    ],
+    "Film Production": [
+      "Arts and Design",
+      "Communication"
+    ],
+    "Film Studies": [
+      "Arts and Design",
+      "History and Philosophy"
+    ],
+    "Fine Arts": [
+      "Arts and Design",
+      "Education"
+    ],
+    "Graphic Design": [
+      "Arts and Design",
+      "Communication"
+    ],
+    "Illustration": [
+      "Arts and Design",
+      "Communication"
+    ],
+    "Industrial Design": [
+      "Arts and Design",
+      "Engineering"
+    ],
+    "Music": [
+      "Arts and Design",
+      "History and Philosophy"
+    ],
+    "Music Production": [
+      "Arts and Design",
+      "Engineering"
+    ],
+    "Performing Arts": [
+      "Arts and Design",
+      "Education"
+    ],
+    "Photography": [
+      "Arts and Design",
+      "Communication"
+    ],
+    "Screenwriting": [
+      "Arts and Design"
+    ],
+    "Theatre Arts": [
+      "Arts and Design",
+      "History and Philosophy"
+    ],
+    "Visual Arts": [
+      "Arts and Design",
+      "Education"
+    ],
+    "Animal Science": [
+      "Biological Sciences",
+      "Veterinary and Agriculture Sciences"
+    ],
+    "Anthropology": [
+      "Biological Sciences",
+      "Politics and Social Studies"
+    ],
+    "Biology": [
+      "Biological Sciences",
+      "Physical and Environment Sciences"
+    ],
+    "Chemistry": [
+      "Biological Sciences",
+      "Physical and Environment Sciences"
+    ],
+    "Community Health": [
+      "Biological Sciences",
+      "Medicine Sciences"
+    ],
+    "Consumer Behavior": [
+      "Biological Sciences",
+      "Business and Economics"
+    ],
+    "Counseling": [
+      "Biological Sciences",
+      "Education"
+    ],
+    "Culinary Nutrition": [
+      "Biological Sciences",
+      "Medicine Sciences"
+    ],
+    "Early Childhood Education": [
+      "Biological Sciences",
+      "Education"
+    ],
+    "Educational Leadership": [
+      "Biological Sciences",
+      "Education"
+    ],
+    "Elementary Education": [
+      "Biological Sciences",
+      "Education"
+    ],
+    "Environmental Science": [
+      "Biological Sciences",
+      "Physical and Environment Sciences"
+    ],
+    "Exercise Science": [
+      "Biological Sciences",
+      "Medicine Sciences"
+    ],
+    "Food Science": [
+      "Biological Sciences",
+      "Veterinary and Agriculture Sciences"
+    ],
+    "Genetics": [
+      "Biological Sciences",
+      "Veterinary and Agriculture Sciences"
+    ],
+    "Kinesiology": [
+      "Biological Sciences"
+    ],
+    "Marriage and Family Therapy": [
+      "Biological Sciences",
+      "Politics and Social Studies"
+    ],
+    "Medicine": [
+      "Biological Sciences",
+      "Medicine Sciences"
+    ],
+    "Natural Resource Management": [
+      "Biological Sciences",
+      "Physical and Environment Sciences"
+    ],
+    "Natural Sciences": [
+      "Biological Sciences",
+      "Physical and Environment Sciences"
+    ],
+    "Neuroscience": [
+      "Biological Sciences",
+      "Physical and Environment Sciences"
+    ],
+    "Nursing": [
+      "Biological Sciences",
+      "Medicine Sciences"
+    ],
+    "Nutrition and Dietetics": [
+      "Biological Sciences",
+      "Medicine Sciences"
+    ],
+    "Occupational Therapy": [
+      "Biological Sciences",
+      "Medicine Sciences"
+    ],
+    "Physical Therapy": [
+      "Biological Sciences",
+      "Medicine Sciences"
+    ],
+    "Psychology": [
+      "Biological Sciences"
+    ],
+    "Public Health": [
+      "Biological Sciences"
+    ],
+    "Public Health Administration": [
+      "Biological Sciences",
+      "Medicine Sciences"
+    ],
+    "Secondary Education": [
+      "Biological Sciences",
+      "Education"
+    ],
+    "Sports Medicine": [
+      "Biological Sciences"
+    ],
+    "Accounting": [
+      "Business and Economics",
+      "Mathematics and Computer Science"
+    ],
+    "Actuarial Science": [
+      "Business and Economics",
+      "Mathematics and Computer Science"
+    ],
+    "Advertising": [
+      "Business and Economics",
+      "Communication"
+    ],
+    "Business Administration": [
+      "Business and Economics",
+      "Politics and Social Studies"
+    ],
+    "Digital Marketing": [
+      "Business and Economics",
+      "Communication"
+    ],
+    "Economics": [
+      "Business and Economics",
+      "Mathematics and Computer Science"
+    ],
+    "Entrepreneurship": [
+      "Business and Economics",
+      "Politics and Social Studies"
+    ],
+    "Finance": [
+      "Business and Economics",
+      "Mathematics and Computer Science"
+    ],
+    "Financial Planning": [
+      "Business and Economics",
+      "Mathematics and Computer Science"
+    ],
+    "Global Studies": [
+      "Business and Economics",
+      "Politics and Social Studies"
+    ],
+    "Hospitality and Tourism": [
+      "Business and Economics"
+    ],
+    "International Business": [
+      "Business and Economics",
+      "Language and Area Studies"
+    ],
+    "Investment Management": [
+      "Business and Economics",
+      "Mathematics and Computer Science"
+    ],
+    "Market Research": [
+      "Business and Economics"
+    ],
+    "Marketing": [
+      "Business and Economics",
+      "Communication"
+    ],
+    "Organizational Development": [
+      "Business and Economics",
+      "Politics and Social Studies"
+    ],
+    "Philosophy, Politics and Economics (PPE)": [
+      "Business and Economics",
+      "Politics and Social Studies"
+    ],
+    "Public Administration": [
+      "Business and Economics",
+      "Politics and Social Studies"
+    ],
+    "Public Policy": [
+      "Business and Economics",
+      "Politics and Social Studies"
+    ],
+    "Public Policy Analysis": [
+      "Business and Economics",
+      "Politics and Social Studies"
+    ],
+    "Sales": [
+      "Business and Economics",
+      "Communication"
+    ],
+    "Sports Management": [
+      "Business and Economics",
+      "Communication"
+    ],
+    "Statistics": [
+      "Business and Economics",
+      "Mathematics and Computer Science"
+    ],
+    "Supply Chain Management": [
+      "Business and Economics",
+      "Engineering"
+    ],
+    "Journalism": [
+      "Communication",
+      "Politics and Social Studies"
+    ],
+    "Mass Communication": [
+      "Communication"
+    ],
+    "Media and Communications": [
+      "Communication",
+      "Politics and Social Studies"
+    ],
+    "Public Relations": [
+      "Communication"
+    ],
+    "Health Education": [
+      "Education"
+    ],
+    "Sociology": [
+      "Education",
+      "Politics and Social Studies"
+    ],
+    "Special Education": [
+      "Education"
+    ],
+    "Artificial Intelligence & Machine Learning": [
+      "Engineering",
+      "Mathematics and Computer Science"
+    ],
+    "Biomedical Engineering": [
+      "Engineering"
+    ],
+    "Chemical Engineering": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Civil Engineering": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Computer Science": [
+      "Engineering",
+      "Mathematics and Computer Science"
+    ],
+    "Cybersecurity": [
+      "Engineering",
+      "Mathematics and Computer Science"
+    ],
+    "Electrical Engineering": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Energy Management": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Geothermal Energy Engineering": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Hydro Energy Engineering": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Information Technology": [
+      "Engineering",
+      "Mathematics and Computer Science"
+    ],
+    "Mechanical Engineering": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Renewable Energy Technologies": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Software Engineering": [
+      "Engineering",
+      "Mathematics and Computer Science"
+    ],
+    "Solar Energy Engineering": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Sustainable Engineering": [
+      "Engineering",
+      "Physical and Environment Sciences"
+    ],
+    "Wind Energy Engineering": [
+      "Engineering"
+    ],
+    "Comparative Literature": [
+      "History and Philosophy",
+      "Language and Area Studies"
+    ],
+    "Comparative Religion": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "Cultural Studies": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "Diplomacy": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "English": [
+      "History and Philosophy",
+      "Language and Area Studies"
+    ],
+    "Ethics": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "Ethnic Studies": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "Foreign Languages": [
+      "History and Philosophy",
+      "Language and Area Studies"
+    ],
+    "Gender and Sexuality Studies": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "History": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "Languages and Linguistics": [
+      "History and Philosophy",
+      "Language and Area Studies"
+    ],
+    "Linguistics": [
+      "History and Philosophy",
+      "Language and Area Studies"
+    ],
+    "Philosophy": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "Religious Studies": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "Social Justice Studies": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "Theology": [
+      "History and Philosophy",
+      "Politics and Social Studies"
+    ],
+    "Translation and Interpretation": [
+      "History and Philosophy",
+      "Language and Area Studies"
+    ],
+    "Area Studies": [
+      "Language and Area Studies",
+      "Politics and Social Studies"
+    ],
+    "Environmental Law": [
+      "Legal Studies",
+      "Physical and Environment Sciences"
+    ],
+    "Law": [
+      "Legal Studies",
+      "Politics and Social Studies"
+    ],
+    "Legal Studies": [
+      "Legal Studies",
+      "Politics and Social Studies"
+    ],
+    "Political Science": [
+      "Legal Studies",
+      "Politics and Social Studies"
+    ],
+    "Applied Mathematics": [
+      "Mathematics and Computer Science",
+      "Physical and Environment Sciences"
+    ],
+    "Data Science": [
+      "Mathematics and Computer Science",
+      "Physical and Environment Sciences"
+    ],
+    "Health Informatics": [
+      "Mathematics and Computer Science",
+      "Medicine Sciences"
+    ],
+    "Mathematics": [
+      "Mathematics and Computer Science",
+      "Physical and Environment Sciences"
+    ],
+    "Physics": [
+      "Mathematics and Computer Science",
+      "Physical and Environment Sciences"
+    ],
+    "Global Health": [
+      "Medicine Sciences",
+      "Politics and Social Studies"
+    ],
+    "Agroecology": [
+      "Physical and Environment Sciences",
+      "Veterinary and Agriculture Sciences"
+    ],
+    "Aquaculture and Fisheries": [
+      "Physical and Environment Sciences",
+      "Veterinary and Agriculture Sciences"
+    ],
+    "Climate Change & Sustainability Studies": [
+      "Physical and Environment Sciences",
+      "Politics and Social Studies"
+    ],
+    "Environmental Policy": [
+      "Physical and Environment Sciences",
+      "Politics and Social Studies"
+    ],
+    "Food Systems and Policy": [
+      "Physical and Environment Sciences",
+      "Veterinary and Agriculture Sciences"
+    ],
+    "Geography": [
+      "Physical and Environment Sciences",
+      "Politics and Social Studies"
+    ],
+    "Geology": [
+      "Physical and Environment Sciences"
+    ],
+    "Soil Science": [
+      "Physical and Environment Sciences",
+      "Veterinary and Agriculture Sciences"
+    ],
+    "Sustainable Agriculture": [
+      "Physical and Environment Sciences",
+      "Veterinary and Agriculture Sciences"
+    ],
+    "International Relations": [
+      "Politics and Social Studies"
+    ],
+    "Public Safety and Emergency Management": [
+      "Politics and Social Studies"
+    ],
+    "Social Work": [
+      "Politics and Social Studies"
+    ],
+    "Veterinary Medicine": [
+      "Veterinary and Agriculture Sciences"
+    ]
+  },
+  "all_majors": [
+    "Accounting",
+    "Actuarial Science",
+    "Advertising",
+    "Agroecology",
+    "Animal Science",
+    "Animation",
+    "Anthropology",
+    "Applied Mathematics",
+    "Aquaculture and Fisheries",
+    "Architecture",
+    "Area Studies",
+    "Artificial Intelligence & Machine Learning",
+    "Biology",
+    "Biomedical Engineering",
+    "Business Administration",
+    "Chemical Engineering",
+    "Chemistry",
+    "Civil Engineering",
+    "Climate Change & Sustainability Studies",
+    "Community Health",
+    "Comparative Literature",
+    "Comparative Religion",
+    "Computer Science",
+    "Consumer Behavior",
+    "Counseling",
+    "Creative Writing",
+    "Culinary Nutrition",
+    "Cultural Studies",
+    "Cybersecurity",
+    "Dance",
+    "Data Science",
+    "Digital Marketing",
+    "Digital Media",
+    "Diplomacy",
+    "Early Childhood Education",
+    "Economics",
+    "Educational Leadership",
+    "Electrical Engineering",
+    "Elementary Education",
+    "Energy Management",
+    "English",
+    "Entrepreneurship",
+    "Environmental Law",
+    "Environmental Planning",
+    "Environmental Policy",
+    "Environmental Science",
+    "Ethics",
+    "Ethnic Studies",
+    "Exercise Science",
+    "Fashion Design",
+    "Film Production",
+    "Film Studies",
+    "Finance",
+    "Financial Planning",
+    "Fine Arts",
+    "Food Science",
+    "Food Systems and Policy",
+    "Foreign Languages",
+    "Gender and Sexuality Studies",
+    "Genetics",
+    "Geography",
+    "Geology",
+    "Geothermal Energy Engineering",
+    "Global Health",
+    "Global Studies",
+    "Graphic Design",
+    "Green Architecture",
+    "Health Education",
+    "Health Informatics",
+    "History",
+    "Hospitality and Tourism",
+    "Hydro Energy Engineering",
+    "Illustration",
+    "Industrial Design",
+    "Information Technology",
+    "Interior Design",
+    "International Business",
+    "International Relations",
+    "Investment Management",
+    "Journalism",
+    "Kinesiology",
+    "Landscape Architecture",
+    "Languages and Linguistics",
+    "Law",
+    "Legal Studies",
+    "Linguistics",
+    "Market Research",
+    "Marketing",
+    "Marriage and Family Therapy",
+    "Mass Communication",
+    "Mathematics",
+    "Mechanical Engineering",
+    "Media and Communications",
+    "Medicine",
+    "Music",
+    "Music Production",
+    "Natural Resource Management",
+    "Natural Sciences",
+    "Neuroscience",
+    "Nursing",
+    "Nutrition and Dietetics",
+    "Occupational Therapy",
+    "Organizational Development",
+    "Performing Arts",
+    "Philosophy",
+    "Philosophy, Politics and Economics (PPE)",
+    "Photography",
+    "Physical Therapy",
+    "Physics",
+    "Political Science",
+    "Psychology",
+    "Public Administration",
+    "Public Health",
+    "Public Health Administration",
+    "Public Policy",
+    "Public Policy Analysis",
+    "Public Relations",
+    "Public Safety and Emergency Management",
+    "Religious Studies",
+    "Renewable Energy Technologies",
+    "Sales",
+    "Screenwriting",
+    "Secondary Education",
+    "Social Justice Studies",
+    "Social Work",
+    "Sociology",
+    "Software Engineering",
+    "Soil Science",
+    "Solar Energy Engineering",
+    "Special Education",
+    "Sports Management",
+    "Sports Medicine",
+    "Statistics",
+    "Supply Chain Management",
+    "Sustainable Agriculture",
+    "Sustainable Design and Construction",
+    "Sustainable Engineering",
+    "Sustainable Interior Design",
+    "Theatre Arts",
+    "Theology",
+    "Translation and Interpretation",
+    "Urban Design and Sustainability",
+    "Urban and Regional Planning",
+    "Veterinary Medicine",
+    "Visual Arts",
+    "Wind Energy Engineering"
+  ],
+  "all_domains": [
+    "Architecture and Planning",
+    "Arts and Design",
+    "Biological Sciences",
+    "Business and Economics",
+    "Communication",
+    "Education",
+    "Engineering",
+    "History and Philosophy",
+    "Language and Area Studies",
+    "Legal Studies",
+    "Mathematics and Computer Science",
+    "Medicine Sciences",
+    "Physical and Environment Sciences",
+    "Politics and Social Studies",
+    "Veterinary and Agriculture Sciences"
+  ]
+}
