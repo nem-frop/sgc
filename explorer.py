@@ -1,7 +1,6 @@
 """Courses Explorer — Singapore tertiary courses mapped to domains and majors."""
 
 import json
-import math
 import os
 
 import pandas as pd
@@ -19,17 +18,6 @@ LIGHT_ORANGE = "#FFAF3F"
 CREAM_BG = "#FFF7EB"
 GOLD_ACCENT = "#FFEAC6"
 DARK_TEXT = "#262626"
-
-POPULAR_DOMAINS = [
-    "Business and Economics",
-    "Mathematics and Computer Science",
-    "Engineering",
-    "Legal Studies",
-    "Medicine Sciences",
-    "Physical and Environment Sciences",
-    "Politics and Social Studies",
-    "Arts and Design",
-]
 
 DOMAIN_COLORS = {
     "Architecture and Planning": "#8B5CF6",
@@ -53,7 +41,7 @@ INST_TYPE_LABELS = {
     "university": "University",
     "polytechnic": "Polytechnic",
     "ite": "ITE",
-    "arts": "Arts University",
+    "arts": "Arts Institution",
 }
 
 INST_SORT_ORDER = {
@@ -64,7 +52,6 @@ INST_SORT_ORDER = {
 }
 
 COURSES_PER_GROUP = 5
-COURSES_PER_PAGE = 15
 
 # ────────────────────────────────────────────────────────────────
 # CSS injection
@@ -166,7 +153,6 @@ def load_data():
 
 
 def count_courses_per_domain(df):
-    """Count how many courses match each domain in the full (type-filtered) dataset."""
     counts = {}
     for domains_str in df["matched_domains"]:
         if domains_str:
@@ -178,7 +164,6 @@ def count_courses_per_domain(df):
 
 
 def count_courses_per_major(df):
-    """Count how many courses match each major in the full (type-filtered) dataset."""
     counts = {}
     for majors_str in df["matched_majors"]:
         if majors_str:
@@ -205,15 +190,13 @@ def make_pill(text, color):
 
 
 def make_domain_pills(domains_str, compact=False):
-    """Render domain pills. If compact, show abbreviated versions."""
     if not domains_str:
-        return '<span style="color:#d1d5db;font-size:11px;">—</span>'
+        return '<span style="color:#d1d5db;font-size:11px;">\u2014</span>'
     pills = []
     for d in str(domains_str).split("|"):
         d = d.strip()
         if d:
             color = DOMAIN_COLORS.get(d, "#6B7280")
-            # Compact: just a colored dot with tooltip-style abbreviated text
             if compact:
                 short = d.split(" and ")[0][:12]
                 pills.append(
@@ -229,7 +212,7 @@ def make_domain_pills(domains_str, compact=False):
 
 def make_major_pills(majors_str):
     if not majors_str:
-        return '<span style="color:#d1d5db;font-size:11px;">—</span>'
+        return '<span style="color:#d1d5db;font-size:11px;">\u2014</span>'
     pills = []
     for m in str(majors_str).split("|"):
         m = m.strip()
@@ -259,11 +242,7 @@ def make_confidence_badge(conf):
 
 
 def render_course_row(row, show_institution=False):
-    """Render a single course as a styled HTML row.
-
-    Table columns: Course title | Majors | Domains (compact) | Match
-    Institution column only shown when show_institution=True (shortlist/expanded).
-    """
+    """Render one course row. Columns: Course | Majors | Domains (compact) | Match."""
     title_link = (
         f'<a href="{row["url"]}" target="_blank" '
         f'style="color:{DARK_TEXT};text-decoration:none;font-weight:500;'
@@ -274,8 +253,7 @@ def render_course_row(row, show_institution=False):
     level = row.get("qualification_level", "")
     level_html = (
         f'<div style="color:#9ca3af;font-size:11px;margin-top:2px;">{level}</div>'
-        if level
-        else ""
+        if level else ""
     )
     majors_html = make_major_pills(row["matched_majors"])
     domains_html = make_domain_pills(row["matched_domains"], compact=True)
@@ -333,20 +311,68 @@ def render_table_header(show_institution=False):
 
 
 # ────────────────────────────────────────────────────────────────
-# Filter rendering
+# Landing page
+# ────────────────────────────────────────────────────────────────
+
+
+def render_landing(df, mapping):
+    """Show a welcome page when no domains are selected."""
+    domain_counts = count_courses_per_domain(df)
+    total = len(df)
+
+    st.markdown(
+        f'<p style="font-family:\'Work Sans\',sans-serif;font-size:16px;'
+        f'color:#6B7280;max-width:600px;line-height:1.6;">'
+        f"Browse <strong style=\"color:{PRIMARY_ORANGE};\">{total} courses</strong> "
+        f"across Singapore's universities and arts institutions. "
+        f"Select one or more domains from the sidebar to get started.</p>",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # Domain cards grid
+    all_domains = sorted(mapping["all_domains"])
+    cols = st.columns(3)
+    for i, domain in enumerate(all_domains):
+        count = domain_counts.get(domain, 0)
+        color = DOMAIN_COLORS.get(domain, "#6B7280")
+        with cols[i % 3]:
+            st.markdown(
+                f'<div style="background-color:white;border-radius:10px;padding:16px 18px;'
+                f"margin-bottom:10px;border-left:4px solid {color};"
+                f'box-shadow:0 1px 3px rgba(0,0,0,0.06);">'
+                f'<div style="font-family:\'Work Sans\',sans-serif;font-weight:600;'
+                f'font-size:14px;color:{DARK_TEXT};">{domain}</div>'
+                f'<div style="font-family:\'Work Sans\',sans-serif;font-size:12px;'
+                f'color:{color};margin-top:4px;">{count} courses</div>'
+                f"</div>",
+                unsafe_allow_html=True,
+            )
+
+    # Quick stats
+    st.markdown("<br>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns(3)
+    uni_count = len(df[df["institution_type"] == "university"]["institution_abbrev"].unique())
+    arts_count = len(df[df["institution_type"] == "arts"]["institution_abbrev"].unique())
+    domain_count = len(all_domains)
+    col1.metric("Universities", uni_count)
+    col2.metric("Arts Institutions", arts_count)
+    col3.metric("Domains", domain_count)
+
+
+# ────────────────────────────────────────────────────────────────
+# Sidebar filters
 # ────────────────────────────────────────────────────────────────
 
 
 def render_sidebar_filters(df, mapping):
-    """Render sidebar with domain checkboxes (with counts) + smart major dropdown + advanced search."""
+    """Sidebar: Domains (all, alphabetical) > Majors > Institution Type > Advanced."""
 
-    # Pre-compute counts based on currently type-filtered data
-    # (we need to get institution types first to filter before counting)
-    # We use all data for counts so they reflect the full dataset
     domain_counts = count_courses_per_domain(df)
     major_counts = count_courses_per_major(df)
 
-    # ── Domains as checkboxes ──
+    # ── 1. Domains (all visible, alphabetical) ──
     st.sidebar.markdown(
         f'<p style="font-family:\'Bricolage Grotesque\',serif;font-size:18px;'
         f'color:{DARK_TEXT};font-weight:600;margin-bottom:4px;">Domains</p>',
@@ -354,8 +380,6 @@ def render_sidebar_filters(df, mapping):
     )
 
     all_domains = sorted(mapping["all_domains"])
-    other_domains = [d for d in all_domains if d not in POPULAR_DOMAINS]
-
     selected_domains = set()
 
     # Select all / clear all
@@ -371,32 +395,18 @@ def render_sidebar_filters(df, mapping):
                 st.session_state[f"domain_{d}"] = False
             st.rerun()
 
-    # Popular domains with counts
-    for domain in POPULAR_DOMAINS:
-        if domain in all_domains:
-            count = domain_counts.get(domain, 0)
-            if st.sidebar.checkbox(
-                f"{domain} ({count})",
-                key=f"domain_{domain}",
-                value=False,
-            ):
-                selected_domains.add(domain)
-
-    # Show all domains expander
-    if other_domains:
-        with st.sidebar.expander(f"More domains ({len(other_domains)})"):
-            for domain in other_domains:
-                count = domain_counts.get(domain, 0)
-                if st.checkbox(
-                    f"{domain} ({count})",
-                    key=f"domain_{domain}",
-                    value=False,
-                ):
-                    selected_domains.add(domain)
+    for domain in all_domains:
+        count = domain_counts.get(domain, 0)
+        if st.sidebar.checkbox(
+            f"{domain} ({count})",
+            key=f"domain_{domain}",
+            value=False,
+        ):
+            selected_domains.add(domain)
 
     st.sidebar.markdown("---")
 
-    # ── Majors dropdown (smart-filtered) with counts ──
+    # ── 2. Majors (smart-filtered dropdown with counts) ──
     available_majors = set()
     if selected_domains:
         for d in selected_domains:
@@ -404,7 +414,6 @@ def render_sidebar_filters(df, mapping):
     else:
         available_majors = set(mapping["all_majors"])
 
-    # Format major options with counts
     major_options = sorted(available_majors)
     major_format = {m: f"{m} ({major_counts.get(m, 0)})" for m in major_options}
 
@@ -417,20 +426,24 @@ def render_sidebar_filters(df, mapping):
 
     st.sidebar.markdown("---")
 
-    # ── Advanced Search (collapsed) ──
+    # ── 3. Institution Type (checkboxes) ──
+    st.sidebar.markdown(
+        f'<p style="font-family:\'Bricolage Grotesque\',serif;font-size:14px;'
+        f'color:{DARK_TEXT};font-weight:600;margin-bottom:4px;">Institution Type</p>',
+        unsafe_allow_html=True,
+    )
+
+    selected_types = []
+    for inst_type, label in INST_TYPE_LABELS.items():
+        default = inst_type in ("university", "arts")
+        if st.sidebar.checkbox(label, value=default, key=f"insttype_{inst_type}"):
+            selected_types.append(inst_type)
+
+    st.sidebar.markdown("---")
+
+    # ── 4. Advanced Search (collapsed) ──
     with st.sidebar.expander("Advanced Search"):
         search = st.text_input("Search course title", key="search_input")
-
-        st.markdown(
-            '<p style="font-size:13px;font-weight:600;margin-top:8px;margin-bottom:4px;">Institution Type</p>',
-            unsafe_allow_html=True,
-        )
-
-        selected_types = []
-        for inst_type, label in INST_TYPE_LABELS.items():
-            default = inst_type in ("university", "arts")
-            if st.checkbox(label, value=default, key=f"insttype_{inst_type}"):
-                selected_types.append(inst_type)
 
         if selected_types:
             available_insts = sorted(
@@ -459,7 +472,6 @@ def render_sidebar_filters(df, mapping):
 
 
 def apply_filters(df, filters):
-    """Apply all active filters to the dataframe."""
     filtered = df.copy()
 
     if filters["types"]:
@@ -471,16 +483,14 @@ def apply_filters(df, filters):
     if filters["domains"]:
         mask = filtered["matched_domains"].apply(
             lambda x: any(d in str(x).split("|") for d in filters["domains"])
-            if x
-            else False
+            if x else False
         )
         filtered = filtered[mask]
 
     if filters["majors"]:
         mask = filtered["matched_majors"].apply(
             lambda x: any(m in str(x).split("|") for m in filters["majors"])
-            if x
-            else False
+            if x else False
         )
         filtered = filtered[mask]
 
@@ -501,12 +511,12 @@ def apply_filters(df, filters):
 
 
 # ────────────────────────────────────────────────────────────────
-# Course view (grouped by institution)
+# Course view (grouped by institution, no pagination)
 # ────────────────────────────────────────────────────────────────
 
 
 def render_courses_view(filtered):
-    """Render the main courses tab with institution grouping and pagination."""
+    """Render courses grouped by institution. No pagination — all results shown."""
 
     # Summary metrics
     col1, col2, col3, col4 = st.columns(4)
@@ -539,37 +549,13 @@ def render_courses_view(filtered):
     groups = filtered.groupby("institution_abbrev", sort=False)
     sorted_groups = sorted(groups, key=lambda x: INST_SORT_ORDER.get(x[0], 99))
 
-    # Pagination
-    page = st.session_state.get("page", 1)
-    start_idx = (page - 1) * COURSES_PER_PAGE
-    end_idx = page * COURSES_PER_PAGE
-
-    # Count total visible courses for pagination
-    total_visible = 0
-    for inst_name, group_df in sorted_groups:
-        is_expanded = inst_name in st.session_state.expanded_groups
-        total_visible += len(group_df) if is_expanded else min(COURSES_PER_GROUP, len(group_df))
-    total_pages = max(1, math.ceil(total_visible / COURSES_PER_PAGE))
-
-    # Render groups
-    course_counter = 0
     for inst_name, group_df in sorted_groups:
         group_df_sorted = group_df.sort_values("title")
+        total = len(group_df_sorted)
         is_expanded = inst_name in st.session_state.expanded_groups
-        show_count = len(group_df_sorted) if is_expanded else min(COURSES_PER_GROUP, len(group_df_sorted))
-
-        group_start = course_counter
-        group_end = course_counter + show_count
-
-        if group_end <= start_idx or group_start >= end_idx:
-            course_counter += show_count
-            continue
-
-        page_group_start = max(0, start_idx - group_start)
-        page_group_end = min(show_count, end_idx - group_start)
+        show_count = total if is_expanded else min(COURSES_PER_GROUP, total)
 
         # Group header
-        total = len(group_df_sorted)
         st.markdown(
             f'<div style="display:flex;align-items:center;gap:8px;margin-top:20px;'
             f'padding-bottom:6px;border-bottom:2px solid {GOLD_ACCENT};">'
@@ -582,9 +568,9 @@ def render_courses_view(filtered):
             unsafe_allow_html=True,
         )
 
-        # Render table (no institution column since we're grouped)
-        page_rows = group_df_sorted.iloc[page_group_start:page_group_end]
-        rows_html = [render_course_row(row, show_institution=False) for _, row in page_rows.iterrows()]
+        # Render table
+        visible_rows = group_df_sorted.head(show_count)
+        rows_html = [render_course_row(row, show_institution=False) for _, row in visible_rows.iterrows()]
         table_html = render_table_header(show_institution=False) + "\n".join(rows_html) + "</tbody></table>"
         st.markdown(table_html, unsafe_allow_html=True)
 
@@ -602,60 +588,6 @@ def render_courses_view(filtered):
                     st.session_state.expanded_groups.add(inst_name)
                     st.rerun()
 
-        course_counter += show_count
-
-    # Pagination controls
-    if total_pages > 1:
-        st.markdown("<br>", unsafe_allow_html=True)
-        col_left, col_center, col_right = st.columns([1, 2, 1])
-        with col_center:
-            if total_pages <= 7:
-                pages_to_show = list(range(1, total_pages + 1))
-            else:
-                pages_to_show = sorted(set(
-                    [1, max(2, page - 1), page, min(total_pages - 1, page + 1), total_pages]
-                ))
-
-            pcols = st.columns(len(pages_to_show))
-            for i, p in enumerate(pages_to_show):
-                with pcols[i]:
-                    if st.button(
-                        str(p),
-                        key=f"page_{p}",
-                        type="primary" if p == page else "secondary",
-                    ):
-                        st.session_state.page = p
-                        st.rerun()
-
-
-# ────────────────────────────────────────────────────────────────
-# Shortlist view
-# ────────────────────────────────────────────────────────────────
-
-
-def render_shortlist_view(df):
-    """Render the shortlisted courses (with institution column visible)."""
-    if not st.session_state.shortlist:
-        st.info("Your shortlist is empty. Use the Courses tab to browse and add courses.")
-        return
-
-    shortlisted = df[df["course_id"].isin(st.session_state.shortlist)]
-
-    st.markdown(
-        f'<p style="font-family:\'Bricolage Grotesque\',serif;font-size:20px;'
-        f'color:{DARK_TEXT};font-weight:600;">'
-        f"Your Shortlist ({len(shortlisted)} courses)</p>",
-        unsafe_allow_html=True,
-    )
-
-    rows_html = [render_course_row(row, show_institution=True) for _, row in shortlisted.iterrows()]
-    table_html = render_table_header(show_institution=True) + "\n".join(rows_html) + "</tbody></table>"
-    st.markdown(table_html, unsafe_allow_html=True)
-
-    if st.button("Clear shortlist"):
-        st.session_state.shortlist.clear()
-        st.rerun()
-
 
 # ────────────────────────────────────────────────────────────────
 # Data quality tab
@@ -663,7 +595,6 @@ def render_shortlist_view(df):
 
 
 def render_data_quality(df, mapping):
-    """Render the data quality analysis tab with coverage gaps."""
     st.subheader("Data Quality Overview")
 
     col1, col2, col3 = st.columns(3)
@@ -693,7 +624,7 @@ def render_data_quality(df, mapping):
     inst_counts = df["institution_abbrev"].value_counts()
     st.bar_chart(inst_counts, color=LIGHT_ORANGE)
 
-    # Coverage gaps: majors with zero or few courses
+    # Coverage gaps
     st.subheader("Major Coverage Gaps")
     major_counts = count_courses_per_major(df)
     all_majors = mapping.get("all_majors", [])
@@ -701,7 +632,6 @@ def render_data_quality(df, mapping):
     for m in all_majors:
         count = major_counts.get(m, 0)
         if count <= 2:
-            # Find which domains this major belongs to
             domains = mapping.get("major_to_domains", {}).get(m, [])
             gaps.append({"Major": m, "Courses": count, "Domains": ", ".join(domains)})
     if gaps:
@@ -738,18 +668,11 @@ def main():
         layout="wide",
     )
 
-    # Inject custom CSS
     st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
     # Init session state
-    if "shortlist" not in st.session_state:
-        st.session_state.shortlist = set()
     if "expanded_groups" not in st.session_state:
         st.session_state.expanded_groups = set()
-    if "page" not in st.session_state:
-        st.session_state.page = 1
-    if "show_shortlist" not in st.session_state:
-        st.session_state.show_shortlist = False
 
     # Header
     st.markdown(
@@ -765,29 +688,32 @@ def main():
     # Sidebar filters
     filters = render_sidebar_filters(df, mapping)
 
-    # Shortlist toggle in sidebar
-    st.sidebar.markdown("---")
-    shortlist_count = len(st.session_state.shortlist)
-    if st.sidebar.button(
-        f"{'★' if shortlist_count > 0 else '☆'} Shortlist ({shortlist_count})",
-        type="primary" if shortlist_count > 0 else "secondary",
-    ):
-        st.session_state.show_shortlist = not st.session_state.show_shortlist
-        st.rerun()
+    # Check if any domain is selected
+    has_active_filters = (
+        filters["domains"]
+        or filters["majors"]
+        or filters["search"]
+        or filters["institutions"]
+        or filters.get("flagged_only")
+        or filters.get("unmatched_only")
+    )
 
-    # Apply filters
-    filtered = apply_filters(df, filters)
-
-    # Main content
-    if st.session_state.show_shortlist:
-        render_shortlist_view(df)
-        if st.button("\u2190 Back to courses"):
-            st.session_state.show_shortlist = False
-            st.rerun()
-    else:
+    if has_active_filters:
+        filtered = apply_filters(df, filters)
         tab1, tab2 = st.tabs(["Courses", "Data Quality"])
         with tab1:
             render_courses_view(filtered)
+        with tab2:
+            render_data_quality(df, mapping)
+    else:
+        # Landing page — no filters active
+        tab1, tab2 = st.tabs(["Home", "Data Quality"])
+        with tab1:
+            # Apply type filter only so landing stats respect university/arts default
+            type_filtered = df.copy()
+            if filters["types"]:
+                type_filtered = type_filtered[type_filtered["institution_type"].isin(filters["types"])]
+            render_landing(type_filtered, mapping)
         with tab2:
             render_data_quality(df, mapping)
 
