@@ -65,7 +65,7 @@ CUSTOM_CSS = f"""
     #MainMenu {{visibility: hidden;}}
     footer {{visibility: hidden;}}
     [data-testid="stToolbar"] {{visibility: hidden;}}
-    header[data-testid="stHeader"] {{background-color: transparent; height: 0;}}
+    header[data-testid="stHeader"] {{background-color: {CREAM_BG};}}
 
     /* Base typography */
     .stApp {{
