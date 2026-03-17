@@ -85,7 +85,11 @@ CUSTOM_CSS = f"""
     /* Sidebar */
     [data-testid="stSidebar"] {{
         background-color: {CREAM_BG};
-        padding-top: 0.5rem;
+        padding-top: 0;
+    }}
+    [data-testid="stSidebar"] .block-container,
+    [data-testid="stSidebar"] [data-testid="stSidebarContent"] {{
+        padding-top: 0.5rem !important;
     }}
     [data-testid="stSidebar"] .stCheckbox label p {{
         font-family: 'Work Sans', sans-serif !important;
