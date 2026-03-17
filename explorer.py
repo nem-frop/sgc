@@ -66,6 +66,12 @@ CUSTOM_CSS = f"""
     footer {{visibility: hidden;}}
     [data-testid="stToolbar"] {{visibility: hidden;}}
     header[data-testid="stHeader"] {{display: none !important;}}
+    .stApp > [data-testid="stAppViewContainer"] {{
+        padding-top: 0 !important;
+    }}
+    .block-container {{
+        padding-top: 1rem !important;
+    }}
 
     /* Base typography */
     .stApp {{
