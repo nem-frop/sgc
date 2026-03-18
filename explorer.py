@@ -476,8 +476,7 @@ def render_sidebar_filters(df, mapping):
 
     selected_types = []
     for inst_type, label in INST_TYPE_LABELS.items():
-        default = inst_type in ("university", "arts")
-        if st.sidebar.checkbox(label, value=default, key=f"insttype_{inst_type}"):
+        if st.sidebar.checkbox(label, key=f"insttype_{inst_type}"):
             selected_types.append(inst_type)
 
     st.sidebar.markdown("---")
@@ -715,6 +714,11 @@ def main():
     # Init session state
     if "expanded_groups" not in st.session_state:
         st.session_state.expanded_groups = set()
+    # Set institution type defaults once — so Select All domains doesn't reset them
+    for _it in INST_TYPE_LABELS:
+        _key = f"insttype_{_it}"
+        if _key not in st.session_state:
+            st.session_state[_key] = _it in ("university", "arts")
 
     # Apply any pending domain selection from landing page card click.
     # This must happen BEFORE the sidebar checkboxes are rendered,
