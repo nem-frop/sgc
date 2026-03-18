@@ -51,6 +51,23 @@ INST_SORT_ORDER = {
     "LASALLE": 12, "NAFA": 13,
 }
 
+INST_FULL_NAMES = {
+    "NUS": "National University of Singapore",
+    "NTU": "Nanyang Technological University",
+    "SMU": "Singapore Management University",
+    "SIT": "Singapore Institute of Technology",
+    "SUSS": "Singapore University of Social Sciences",
+    "SUTD": "Singapore University of Technology and Design",
+    "NYP": "Nanyang Polytechnic",
+    "NP": "Ngee Ann Polytechnic",
+    "RP": "Republic Polytechnic",
+    "SP": "Singapore Polytechnic",
+    "TP": "Temasek Polytechnic",
+    "ITE": "Institute of Technical Education",
+    "LASALLE": "LASALLE College of the Arts",
+    "NAFA": "Nanyang Academy of Fine Arts",
+}
+
 COURSES_PER_GROUP = 5
 
 # ────────────────────────────────────────────────────────────────
@@ -595,12 +612,14 @@ def render_courses_view(filtered):
         is_expanded = inst_name in st.session_state.expanded_groups
         show_count = total if is_expanded else min(COURSES_PER_GROUP, total)
 
-        # Group header
+        # Group header — full name with abbreviation
+        full_name = INST_FULL_NAMES.get(inst_name, inst_name)
         st.markdown(
             f'<div style="display:flex;align-items:center;gap:8px;margin-top:20px;'
             f'padding-bottom:6px;border-bottom:2px solid {GOLD_ACCENT};">'
             f'<span style="font-family:\'Bricolage Grotesque\',serif;font-size:18px;'
-            f'color:{DARK_TEXT};font-weight:600;">{inst_name}</span>'
+            f'color:{DARK_TEXT};font-weight:600;">{full_name}'
+            f'<span style="color:#9ca3af;font-weight:400;font-size:14px;"> ({inst_name})</span></span>'
             f'<span style="background-color:{CREAM_BG};color:{PRIMARY_ORANGE};'
             f"padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;"
             f"font-family:'Work Sans',sans-serif;\">{total} courses</span>"
